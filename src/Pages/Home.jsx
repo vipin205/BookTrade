@@ -30,10 +30,9 @@ export default function Home() {
 
   return (
     <div className="px-6 mt-1.5 md:px-12">
-      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur delectus quidem maiores iure quo aliquam nemo asperiores quisquam officia, est deserunt repellendus esse nesciunt dicta recusandae vero provident! Labore, adipisci.</p>
       {/* Hero Section */}
 
-      <div className="animated-gradient min-h-fit md:min-h-screen flex items-center justify-center px-4">
+      <div className="animated-gradient flex items-center justify-center px-4 py-5 rounded-2xl">
         <div className="flex flex-col items-center justify-center text-center space-y-12 w-full">
           {/* Welcome Card */}
           <div className="bg-white bg-opacity-70 backdrop-blur section-hover-effect1 p-6 sm:p-10 rounded-xl shadow-xl w-full max-w-lg">
@@ -68,7 +67,10 @@ export default function Home() {
               <div
                 key={item}
                 onClick={() => handleClick(item)}
-                className="bg-gray-100 rounded-xl p-6 text-center hover:bg-blue-100 cursor-pointer transition section-hover-effect1"
+                className="bg-gray-100 rounded-xl p-6 text-center 
+             hover:bg-blue-100 active:bg-blue-200 focus:bg-blue-200 
+             hover:scale-105 transition transform duration-200 
+             cursor-pointer section-hover-effect1"
               >
                 <h2 className="text-xl font-semibold">{item} Books</h2>
               </div>

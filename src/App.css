@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, #a18cd1, #fbc2eb, #fad0c4, #ff9a9e);
+  background-size: 300% 300%;
+  animation: gradient-x 8s ease infinite;
+}
+.section-hover-effect {
+  @apply transform transition duration-500 hover:scale-95 hover:-translate-x-2 hover:-translate-y-2 hover:shadow-xl;
+}
+.section-hover-effect1 {
+  @apply transform transition duration-300 hover:scale-102 hover:-translate-x-0 hover:-translate-y-0 hover:shadow-xl;
+}

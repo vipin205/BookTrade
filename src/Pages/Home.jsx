@@ -30,6 +30,7 @@ export default function Home() {
 
   return (
     <div className="px-6 mt-1.5 md:px-12">
+      <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Pariatur delectus quidem maiores iure quo aliquam nemo asperiores quisquam officia, est deserunt repellendus esse nesciunt dicta recusandae vero provident! Labore, adipisci.</p>
       {/* Hero Section */}
 
       <div className="animated-gradient min-h-fit md:min-h-screen flex items-center justify-center px-4">

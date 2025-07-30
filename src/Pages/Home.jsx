@@ -32,7 +32,7 @@ export default function Home() {
     <div className="px-6 mt-1.5 md:px-12">
       {/* Hero Section */}
 
-      <div className="animated-gradient min-h-screen flex items-center justify-center px-4">
+      <div className="animated-gradient min-h-fit md:min-h-screen flex items-center justify-center px-4">
         <div className="flex flex-col items-center justify-center text-center space-y-12 w-full">
           {/* Welcome Card */}
           <div className="bg-white bg-opacity-70 backdrop-blur section-hover-effect1 p-6 sm:p-10 rounded-xl shadow-xl w-full max-w-lg">

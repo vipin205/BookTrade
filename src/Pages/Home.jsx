@@ -90,9 +90,6 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="text-center text-sm text-gray-500 py-8 mt-16 border-t">
-        © 2025 BookTrade — Built with ❤️
-      </footer>
     </div>
   );
 }

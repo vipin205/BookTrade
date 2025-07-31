@@ -1,9 +1,33 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useRef, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
+import toast from "react-hot-toast";
+import Home from "../Pages/Home";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+  const profileRef = useRef();
+  const profilePic = ""; // 👈 Placeholder profile pic
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (profileRef.current && !profileRef.current.contains(e.target)) {
+        setProfileOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const navigate = useNavigate();
+
+  const LogoutHandler = () => {
+    toast.success("Logged out successfully.");
+    setTimeout(() => {
+      navigate("/login")
+    }, 1000);
+  };
 
   return (
     <nav className="bg-gray-200 shadow py-4 px-6 flex justify-between items-center sticky top-0 z-50">
@@ -12,7 +36,7 @@ export default function Navbar() {
         BookTrade
       </Link>
 
-      {/* Hamburger Icon */}
+      {/* Hamburger Icon (Mobile) */}
       <div
         className="md:hidden text-2xl text-blue-600 cursor-pointer"
         onClick={() => setMenuOpen(!menuOpen)}
@@ -20,8 +44,8 @@ export default function Navbar() {
         {menuOpen ? <FaTimes /> : <FaBars />}
       </div>
 
-      {/* Navigation Links (Desktop) */}
-      <div className="hidden md:flex space-x-6 text-gray-700 font-medium">
+      {/* Desktop Nav */}
+      <div className="hidden md:flex items-center space-x-6 text-gray-700 font-medium">
         <Link className="hover:underline text-blue-500" to="/explore">
           Explore
         </Link>
@@ -31,9 +55,48 @@ export default function Navbar() {
         <Link className="hover:underline text-blue-500" to="/dashboard">
           Dashboard
         </Link>
+
+        {/* Profile Picture Dropdown */}
+        <div className="relative" ref={profileRef}>
+          <img
+            src={profilePic}
+            alt="Profile"
+            className="w-10 h-10 rounded-full cursor-pointer border-2 border-blue-500"
+            onClick={() => setProfileOpen(!profileOpen)}
+          />
+
+          {profileOpen && (
+            <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50">
+              <Link
+                to="/profile"
+                className="block px-4 py-2 text-sm hover:bg-gray-100"
+              >
+                Personal Info
+              </Link>
+              <Link
+                to="/cart"
+                className="block px-4 py-2 text-sm hover:bg-gray-100"
+              >
+                My Cart
+              </Link>
+              <Link
+                to="/settings"
+                className="block px-4 py-2 text-sm hover:bg-gray-100"
+              >
+                Settings
+              </Link>
+              <button
+                className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 text-red-500"
+                onClick={LogoutHandler}
+              >
+                Logout
+              </button>
+            </div>
+          )}
+        </div>
       </div>
 
-      {/* Navigation Links (Mobile) */}
+      {/* Mobile Nav */}
       {menuOpen && (
         <div className="absolute top-16 left-0 w-full bg-gray-100 flex flex-col items-center gap-4 py-4 md:hidden">
           <Link

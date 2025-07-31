@@ -22,6 +22,7 @@ export default function Navbar() {
   const navigate = useNavigate();
   const handleLogout = () => {
     toast.success("Logged out successfully.");
+    setProfileOpen(false);
     setTimeout(() => {
       navigate("/login");
     }, 1000);
@@ -53,6 +54,9 @@ export default function Navbar() {
         <Link className="hover:underline text-blue-500" to="/book/:id">
           Book Details
         </Link>
+        <Link className="hover:underline text-blue-500" to="book-collections">
+          Book Collections
+        </Link>
         <Link className="hover:underline text-blue-500" to="/dashboard">
           Dashboard
         </Link>
@@ -73,18 +77,21 @@ export default function Navbar() {
               <Link
                 to="/personal-info"
                 className="block px-4 py-2 text-sm hover:bg-gray-100"
+                onClick={() => setProfileOpen(false)}
               >
                 Personal Info
               </Link>
               <Link
                 to="/cart"
                 className="block px-4 py-2 text-sm hover:bg-gray-100"
+                onClick={() => setProfileOpen(false)}
               >
                 My Cart
               </Link>
               <Link
                 to="/settings"
                 className="block px-4 py-2 text-sm hover:bg-gray-100"
+                onClick={() => setProfileOpen(false)}
               >
                 Settings
               </Link>
@@ -102,39 +109,18 @@ export default function Navbar() {
       {/* Mobile Nav with Backdrop */}
       {menuOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/30" // Backdrop
+          className="fixed inset-0 z-40 bg-black/30 flex justify-end"
           onClick={() => {
             setMenuOpen(false);
             setProfileOpen(false);
           }}
         >
           <div
-            className="absolute right-4 top-16 w-56 bg-gray-100 rounded-lg shadow-lg flex flex-col items-center gap-4 py-4 md:hidden z-50 animate-fade-in"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
+            className="w-64 bg-gray-100 h-full p-6 shadow-lg flex flex-col gap-6 animate-slide-in-right"
+            onClick={(e) => e.stopPropagation()} // Prevent closing on inner click
           >
-            <Link
-              className="text-blue-500 font-medium"
-              to="/explore"
-              onClick={() => setMenuOpen(false)}
-            >
-              Explore
-            </Link>
-            <Link
-              className="text-blue-500 font-medium"
-              to="/book/:id"
-              onClick={() => setMenuOpen(false)}
-            >
-              Book Details
-            </Link>
-            <Link
-              className="text-blue-500 font-medium"
-              to="/dashboard"
-              onClick={() => setMenuOpen(false)}
-            >
-              Dashboard
-            </Link>
+            {/* Profile dropdown inside sidebar */}
 
-            {/* Mobile Profile Dropdown */}
             <div className="relative" ref={profileRef}>
               <img
                 src={profilePic}
@@ -148,37 +134,83 @@ export default function Navbar() {
 
               {profileOpen && (
                 <div
-                  className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50 animate-fade-in"
+                  className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50"
                   style={{ animation: "fadeIn 0.3s ease-out" }}
                   onClick={(e) => e.stopPropagation()}
                 >
                   <Link
                     to="/personal-info"
                     className="block px-4 py-2 text-sm hover:bg-gray-100"
+                    onClick={() => {
+                      setProfileOpen(false);
+                      setMenuOpen(false);
+                    }}
                   >
                     Personal Info
                   </Link>
                   <Link
                     to="/cart"
                     className="block px-4 py-2 text-sm hover:bg-gray-100"
+                    onClick={() => {
+                      setProfileOpen(false);
+                      setMenuOpen(false);
+                    }}
                   >
                     My Cart
                   </Link>
                   <Link
                     to="/settings"
                     className="block px-4 py-2 text-sm hover:bg-gray-100"
+                    onClick={() => {
+                      setProfileOpen(false);
+                      setMenuOpen(false);
+                    }}
                   >
                     Settings
                   </Link>
                   <button
                     className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 text-red-500"
-                    onClick={() => alert("Logged out!")}
+                    onClick={() => {
+                      setProfileOpen(false);
+                      setMenuOpen(false);
+                      alert("Logged out!");
+                    }}
                   >
                     Logout
                   </button>
                 </div>
               )}
             </div>
+            <Link
+              className="text-blue-500 font-medium"
+              to="/explore"
+              onClick={() => {
+                setMenuOpen(false);
+                setProfileOpen(false);
+              }}
+            >
+              Explore
+            </Link>
+            <Link
+              className="text-blue-500 font-medium"
+              to="/book/:id"
+              onClick={() => {
+                setMenuOpen(false);
+                setProfileOpen(false);
+              }}
+            >
+              Book Details
+            </Link>
+            <Link
+              className="text-blue-500 font-medium"
+              to="/dashboard"
+              onClick={() => {
+                setMenuOpen(false);
+                setProfileOpen(false);
+              }}
+            >
+              Dashboard
+            </Link>
           </div>
         </div>
       )}

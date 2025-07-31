@@ -17,6 +17,8 @@ import PersonalInfo from "./Pages/PersonalInformation";
 import AboutUs from "./Pages/AboutUs";
 import MyCart from "./Pages/MyCart";
 import Settings from "./Pages/Setting";
+import BookCollections from "./Pages/BookCollections";
+import ClassDetails from "./Pages/ClassDetails";
 
 export default function App() {
   return (
@@ -37,6 +39,8 @@ export default function App() {
         <Route path="/about-us" element={<AboutUs/>} />
         <Route path="/cart" element={<MyCart/>} />
         <Route path="/settings" element={<Settings/>} />
+        <Route path="/book-collections" element={<BookCollections/>} />
+        <Route path="/book-collections/:className" element={<ClassDetails/>} />
       </Routes>
       <Footer/>
       <BackToTop/>

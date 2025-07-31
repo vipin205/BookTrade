@@ -31,7 +31,6 @@ export default function Home() {
   return (
     <div className="px-6 mt-1.5 md:px-12">
       {/* Hero Section */}
-
       <div className="animated-gradient flex items-center justify-center px-4 py-5 rounded-2xl">
         <div className="flex flex-col items-center justify-center text-center space-y-12 w-full">
           {/* Welcome Card */}
@@ -78,7 +77,6 @@ export default function Home() {
           </section>
         </div>
       </div>
-
       {/* Featured Books */}
       <section>
         <h2 className="text-2xl font-bold mb-4">Featured Books</h2>
@@ -88,8 +86,47 @@ export default function Home() {
           ))}
         </div>
       </section>
+      // Our Expertise Section
+      <section className="mt-16 bg-gray-50 py-12 px-4 rounded-xl shadow-inner">
+        <h2 className="text-3xl font-bold text-center text-blue-700 mb-10">
+          Our Expertise
+        </h2>
 
-      {/* Footer */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          {/* Expertise 1 */}
+          <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+            <h3 className="text-xl font-semibold mb-2 text-blue-600">
+              Book Exchange
+            </h3>
+            <p className="text-gray-600">
+              We make book trading effortless with a user-friendly platform to
+              buy, sell, borrow, or donate books.
+            </p>
+          </div>
+
+          {/* Expertise 2 */}
+          <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+            <h3 className="text-xl font-semibold mb-2 text-blue-600">
+              Community Driven
+            </h3>
+            <p className="text-gray-600">
+              Our platform connects readers and learners, encouraging a
+              sustainable and cost-effective reading culture.
+            </p>
+          </div>
+
+          {/* Expertise 3 */}
+          <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
+            <h3 className="text-xl font-semibold mb-2 text-blue-600">
+              Trusted & Secure
+            </h3>
+            <p className="text-gray-600">
+              Your data and transactions are protected with secure systems,
+              ensuring peace of mind while trading.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

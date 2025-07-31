@@ -13,6 +13,8 @@ import Login from "./Pages/Login";
 import Signup from "./Pages/Signup";
 import Footer from "./Components/Footer";
 import BackToTop from "./Components/BackToTop";
+import PersonalInfo from "./Pages/PersonalInformation";
+import AboutUs from "./Pages/AboutUs";
 
 export default function App() {
   return (
@@ -29,6 +31,8 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/personal-info" element={<PersonalInfo/>} />
+        <Route path="/about-us" element={<AboutUs/>} />
       </Routes>
       <Footer/>
       <BackToTop/>

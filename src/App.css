@@ -20,3 +20,17 @@
 .section-hover-effect1 {
   @apply transform transition duration-300 hover:scale-102 hover:-translate-x-0 hover:-translate-y-0 hover:shadow-xl;
 }
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}

@@ -26,7 +26,7 @@ export default function Dashboard() {
   };
 
   return (
-    <div className="px-6 py-12">
+    <div className="px-6 py-12 animate-fade-in-down ">
       <h1 className="text-3xl font-bold mb-8">My Dashboard</h1>
 
       <section className="mb-10">

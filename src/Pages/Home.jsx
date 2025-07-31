@@ -29,7 +29,7 @@ export default function Home() {
   };
 
   return (
-    <div className="px-6 mt-1.5 md:px-12">
+    <div className="px-6 mt-1.5 md:px-12 animate-fade-in-down ">
       {/* Hero Section */}
       <div className="animated-gradient flex items-center justify-center px-4 py-5 rounded-2xl">
         <div className="flex flex-col items-center justify-center text-center space-y-12 w-full">
@@ -79,14 +79,14 @@ export default function Home() {
       </div>
       {/* Featured Books */}
       <section>
-        <h2 className="text-2xl font-bold mb-4">Featured Books</h2>
+        <h2 className="text-2xl font-bold pt-1 mb-4">Featured Books</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {books.slice(0, 6).map((book) => (
             <BookCard key={book.id} book={book} />
           ))}
         </div>
       </section>
-      // Our Expertise Section
+      
       <section className="mt-16 bg-gray-50 py-12 px-4 rounded-xl shadow-inner">
         <h2 className="text-3xl font-bold text-center text-blue-700 mb-10">
           Our Expertise

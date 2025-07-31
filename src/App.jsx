@@ -15,6 +15,8 @@ import Footer from "./Components/Footer";
 import BackToTop from "./Components/BackToTop";
 import PersonalInfo from "./Pages/PersonalInformation";
 import AboutUs from "./Pages/AboutUs";
+import MyCart from "./Pages/MyCart";
+import Settings from "./Pages/Setting";
 
 export default function App() {
   return (
@@ -33,6 +35,8 @@ export default function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/personal-info" element={<PersonalInfo/>} />
         <Route path="/about-us" element={<AboutUs/>} />
+        <Route path="/cart" element={<MyCart/>} />
+        <Route path="/settings" element={<Settings/>} />
       </Routes>
       <Footer/>
       <BackToTop/>

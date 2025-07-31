@@ -60,7 +60,7 @@ export default function Explore() {
   const uniqueLocations = ["All", ...new Set(books.map((book) => book.location))];
 
   return (
-    <div className="p-6 max-w-6xl mx-auto">
+    <div className="p-6 max-w-6xl mx-auto animate-fade-in-down ">
       <h2 className="text-2xl font-bold mb-4">Explore Books</h2>
 
       {/* Filters */}

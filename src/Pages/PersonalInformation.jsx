@@ -50,7 +50,7 @@ export default function PersonalInfo() {
   };
 
   return (
-    <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-md">
+    <div className="max-w-xl mx-auto mt-10 p-6 bg-white rounded-xl shadow-md animate-fade-in-down ">
       <h2 className="text-2xl font-bold mb-6 text-center text-blue-600">Personal Information</h2>
 
       {/* Profile Picture Upload & Preview */}

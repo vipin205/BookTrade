@@ -19,13 +19,13 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const navigate=useNavigate();
-  const handleLogout=()=>{
-    toast.success("Logged out successfully.")
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    toast.success("Logged out successfully.");
     setTimeout(() => {
-      navigate("/login")
+      navigate("/login");
     }, 1000);
-  }
+  };
 
   return (
     <nav className="bg-gray-200 shadow py-4 px-6 flex justify-between items-center sticky top-0 z-50">
@@ -67,16 +67,25 @@ export default function Navbar() {
           />
           {profileOpen && (
             <div
-              className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50 animate-fade-in"
+              className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50 "
               style={{ animation: "fadeIn 0.3s ease-out" }}
             >
-              <Link to="/personal-info" className="block px-4 py-2 text-sm hover:bg-gray-100">
+              <Link
+                to="/personal-info"
+                className="block px-4 py-2 text-sm hover:bg-gray-100"
+              >
                 Personal Info
               </Link>
-              <Link to="/cart" className="block px-4 py-2 text-sm hover:bg-gray-100">
+              <Link
+                to="/cart"
+                className="block px-4 py-2 text-sm hover:bg-gray-100"
+              >
                 My Cart
               </Link>
-              <Link to="/settings" className="block px-4 py-2 text-sm hover:bg-gray-100">
+              <Link
+                to="/settings"
+                className="block px-4 py-2 text-sm hover:bg-gray-100"
+              >
                 Settings
               </Link>
               <button
@@ -90,61 +99,86 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Nav */}
+      {/* Mobile Nav with Backdrop */}
       {menuOpen && (
-        <div className="absolute top-16 left-0 w-full bg-gray-100 flex flex-col items-center gap-4 py-4 md:hidden">
-          <Link
-            className="text-blue-500 font-medium"
-            to="/explore"
-            onClick={() => setMenuOpen(false)}
+        <div
+          className="fixed inset-0 z-40 bg-black/30" // Backdrop
+          onClick={() => {
+            setMenuOpen(false);
+            setProfileOpen(false);
+          }}
+        >
+          <div
+            className="absolute right-4 top-16 w-56 bg-gray-100 rounded-lg shadow-lg flex flex-col items-center gap-4 py-4 md:hidden z-50 animate-fade-in"
+            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
           >
-            Explore
-          </Link>
-          <Link
-            className="text-blue-500 font-medium"
-            to="/book/:id"
-            onClick={() => setMenuOpen(false)}
-          >
-            Book Details
-          </Link>
-          <Link
-            className="text-blue-500 font-medium"
-            to="/dashboard"
-            onClick={() => setMenuOpen(false)}
-          >
-            Dashboard
-          </Link>
+            <Link
+              className="text-blue-500 font-medium"
+              to="/explore"
+              onClick={() => setMenuOpen(false)}
+            >
+              Explore
+            </Link>
+            <Link
+              className="text-blue-500 font-medium"
+              to="/book/:id"
+              onClick={() => setMenuOpen(false)}
+            >
+              Book Details
+            </Link>
+            <Link
+              className="text-blue-500 font-medium"
+              to="/dashboard"
+              onClick={() => setMenuOpen(false)}
+            >
+              Dashboard
+            </Link>
 
-          {/* Mobile Profile */}
-          <div className="relative" ref={profileRef}>
-            <img
-              src={profilePic}
-              alt="Profile"
-              className="w-10 h-10 rounded-full cursor-pointer border-2 border-blue-500"
-              onClick={() => setProfileOpen(!profileOpen)}
-            />
-            {profileOpen && (
-              <div
-                className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50 animate-fade-in"
-                style={{ animation: "fadeIn 0.3s ease-out" }}
-              >
-                <Link to="/profile" className="block px-4 py-2 text-sm hover:bg-gray-100">
-                  Personal Info
-                </Link>
-                <Link to="/cart" className="block px-4 py-2 text-sm hover:bg-gray-100">
-                  My Cart
-                </Link>
-                <Link to="/settings" className="block px-4 py-2 text-sm hover:bg-gray-100">
-                  Settings
-                </Link>
-                <button
-                  className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 text-red-500"
-                  onClick={() => alert("Logged out!")}
+            {/* Mobile Profile Dropdown */}
+            <div className="relative" ref={profileRef}>
+              <img
+                src={profilePic}
+                alt="Profile"
+                className="w-10 h-10 rounded-full cursor-pointer border-2 border-blue-500"
+                onClick={(e) => {
+                  e.stopPropagation(); // Prevent backdrop click
+                  setProfileOpen(!profileOpen);
+                }}
+              />
+
+              {profileOpen && (
+                <div
+                  className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-2 z-50 animate-fade-in"
+                  style={{ animation: "fadeIn 0.3s ease-out" }}
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  Logout
-                </button>
-              </div>
-            )}
+                  <Link
+                    to="/personal-info"
+                    className="block px-4 py-2 text-sm hover:bg-gray-100"
+                  >
+                    Personal Info
+                  </Link>
+                  <Link
+                    to="/cart"
+                    className="block px-4 py-2 text-sm hover:bg-gray-100"
+                  >
+                    My Cart
+                  </Link>
+                  <Link
+                    to="/settings"
+                    className="block px-4 py-2 text-sm hover:bg-gray-100"
+                  >
+                    Settings
+                  </Link>
+                  <button
+                    className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 text-red-500"
+                    onClick={() => alert("Logged out!")}
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}

@@ -203,6 +203,16 @@ export default function Navbar() {
             </Link>
             <Link
               className="text-blue-500 font-medium"
+              to="/book-collections"
+              onClick={() => {
+                setMenuOpen(false);
+                setProfileOpen(false);
+              }}
+            >
+              Book Collectionss
+            </Link>
+            <Link
+              className="text-blue-500 font-medium"
               to="/dashboard"
               onClick={() => {
                 setMenuOpen(false);

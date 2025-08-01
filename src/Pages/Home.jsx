@@ -1,18 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../App.css";
 import BookCard from "../Components/Bookcard";
-import { books } from "../Data/Books"; // sample book data
-import { Link, Links, useNavigate } from "react-router-dom";
+import { books } from "../Data/Books";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
-import Signup from "./Signup";
+import PopupModal from "../Components/PopUpModal";
+
 
 export default function Home() {
   const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(true);
+
   const GettingStarted = () => {
     navigate("/signup");
   };
 
-  const handleClick = (category, id = null) => {
+  const handleClick = (category) => {
     const routes = {
       Buy: "/buy-book",
       Donate: "/donate-book",
@@ -29,7 +32,10 @@ export default function Home() {
   };
 
   return (
-    <div className="px-6 mt-1.5 md:px-12 animate-fade-in-down ">
+    <div className="px-6 mt-1.5 md:px-12 animate-fade-in-down relative">
+      {/* Popup */}
+      {showPopup && <PopupModal onClose={() => setShowPopup(false)} />}
+
       {/* Hero Section */}
       <div className="animated-gradient flex items-center justify-center px-4 py-5 rounded-2xl">
         <div className="flex flex-col items-center justify-center text-center space-y-12 w-full">
@@ -77,6 +83,7 @@ export default function Home() {
           </section>
         </div>
       </div>
+
       {/* Featured Books */}
       <section>
         <h2 className="text-2xl font-bold pt-1 mb-4">Featured Books</h2>
@@ -86,14 +93,14 @@ export default function Home() {
           ))}
         </div>
       </section>
-      
+
+      {/* Expertise Section */}
       <section className="mt-16 bg-gray-50 py-12 px-4 rounded-xl shadow-inner">
         <h2 className="text-3xl font-bold text-center text-blue-700 mb-10">
           Our Expertise
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* Expertise 1 */}
           <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
             <h3 className="text-xl font-semibold mb-2 text-blue-600">
               Book Exchange
@@ -104,7 +111,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Expertise 2 */}
           <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
             <h3 className="text-xl font-semibold mb-2 text-blue-600">
               Community Driven
@@ -115,7 +121,6 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Expertise 3 */}
           <div className="bg-white p-6 rounded-lg shadow hover:shadow-lg transition">
             <h3 className="text-xl font-semibold mb-2 text-blue-600">
               Trusted & Secure

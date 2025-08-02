@@ -1,4 +1,3 @@
-// File: src/components/PopupModal.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 

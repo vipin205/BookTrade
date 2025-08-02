@@ -5,7 +5,7 @@ import BookCard from "../Components/Bookcard";
 import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
-  const userId = 1; // simulate logged-in user
+  const userId = (1); // simulate logged-in user
   const [myBooks, setMyBooks] = useState(
     initialBooks.filter((book) => book.userId === userId)
   );
@@ -20,11 +20,7 @@ export default function Dashboard() {
   };
   const Navigate=useNavigate();
 
-  const handleEdit = (book) => {
-    Navigate(`/edit-book/${book.id}`)
-    // Future: Redirect to edit page or open modal
-  };
-
+  
   return (
     <div className="px-6 py-12 animate-fade-in-down ">
       <h1 className="text-3xl font-bold mb-8">My Dashboard</h1>
@@ -41,13 +37,8 @@ export default function Dashboard() {
                 className="relative border rounded-xl p-4 shadow-sm"
               >
                 <BookCard book={book} />
-                <div className="flex gap-2 mt-4">
-                  <button
-                    onClick={() => handleEdit(book)}
-                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                  >
-                    Edit
-                  </button>
+                <div className="flex justify-center gap-2 mt-4">
+                
                   <button
                     onClick={() => handleDelete(book.id)}
                     className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"

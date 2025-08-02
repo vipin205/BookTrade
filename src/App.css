@@ -92,7 +92,7 @@
 .border-glow:hover {
   box-shadow: 0 0 10px 2px rgba(59, 130, 246, 0.6); /* Tailwind blue-500 glow */
   border: 2px solid rgba(59, 130, 246, 0.8);
-  transition: box-shadow 0.3s ease, border 0.4s ease;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
 }
 
 

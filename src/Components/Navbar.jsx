@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import toast from "react-hot-toast";
 
+
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
@@ -34,6 +35,7 @@ export default function Navbar() {
       <Link to="/" className="text-xl font-bold text-blue-600">
         BookTrade
       </Link>
+      
 
       {/* Hamburger Icon */}
       <div
@@ -224,6 +226,7 @@ export default function Navbar() {
           </div>
         </div>
       )}
+      
     </nav>
   );
 }
